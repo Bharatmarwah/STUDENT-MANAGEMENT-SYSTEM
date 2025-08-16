@@ -5,3 +5,18 @@ services:
     plan: free
     buildCommand: ./mvnw clean package
     startCommand: java -jar target/StudentManagementSystem-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: APP_NAME
+        fromFile: .env
+      - key: DB_HOST
+        fromFile: .env
+      - key: DB_PORT
+        fromFile: .env
+      - key: DB_NAME
+        fromFile: .env
+      - key: DB_USER
+        fromFile: .env
+      - key: DB_PASS
+        fromFile: .env
+      - key: SPRING_PROFILES_ACTIVE
+        fromFile: .env
