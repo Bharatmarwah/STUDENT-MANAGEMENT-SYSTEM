@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: StudentManagementSystem
+    env: java
+    plan: free
+    buildCommand: ./mvnw clean package
+    startCommand: java -jar target/StudentManagementSystem-0.0.1-SNAPSHOT.jar
