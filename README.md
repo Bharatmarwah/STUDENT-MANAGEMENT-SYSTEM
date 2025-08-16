@@ -30,6 +30,9 @@ The STUDENT-MANAGEMENT-SYSTEM is a web-based application designed to help educat
 - IT staff maintaining academic databases
 ## Database Connection
 <img width="826" height="883" alt="FolderStructure" src="https://github.com/user-attachments/assets/ddaeef68-606b-4f20-bf72-7125e5f93464" />
+
+
+
 ## Folder Structure
 <img width="922" height="318" alt="DatabaseConnection" src="https://github.com/user-attachments/assets/3ada6cb3-2b4a-4052-a64d-55da0ac80585" />
 
