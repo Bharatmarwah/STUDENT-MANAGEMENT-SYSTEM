@@ -28,3 +28,10 @@ The STUDENT-MANAGEMENT-SYSTEM is a web-based application designed to help educat
 - School/College administrators
 - Teachers managing student records
 - IT staff maintaining academic databases
+
+
+
+StudentManagementSystem/images/DatabaseConnection.png
+StudentManagementSystem/images/FolderStructure.png
+
+
