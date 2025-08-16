@@ -38,7 +38,7 @@ The STUDENT-MANAGEMENT-SYSTEM is a web-based application designed to help educat
 ## Database Connection
 ![Database Connection](https://raw.githubusercontent.com/Bharatmarwah/STUDENT-MANAGEMENT-SYSTEM/main/DatabaseConnection.png)
 
-
 ## Folder Structure
-![Folder Structure](https://raw.githubusercontent.com/BharatMarwah/StudentManagementSystem/main/StudentManagementSystem/FolderStructure.png)
+![Folder Structure](https://raw.githubusercontent.com/Bharatmarwah/STUDENT-MANAGEMENT-SYSTEM/main/FolderStructure.png)
+
 
