@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove Student - Student Management System</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: rgba(255,255,255,0.95);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.8rem;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input[type="text"]:focus, input[type="number"]:focus {
+            border-color: #2575fc;
+            box-shadow: 0 0 5px rgba(37,117,252,0.5);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2575fc;
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #1a5edb;
+        }
+
+        .message {
+            font-weight: bold;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .success {
+            color: green;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2575fc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Remove Student</h1>
+    <p style="color:#555; margin-bottom:20px;">Enter student details to remove from the system</p>
+
+    <form th:action="@{/removeStudent}" method="post">
+        <label>Student ID</label>
+        <input type="number" name="id" placeholder="Enter student ID" required>
+
+        <label>First Name </label>
+        <input type="text" name="firstName" placeholder="Enter first name" required>
+
+        <label>Last Name </label>
+        <input type="text" name="secondName" placeholder="Enter last name" required>
+
+        <button type="submit">Remove Student</button>
+    </form>
+
+    <p th:if="${error}" th:text="${error}" class="message error"></p>
+    <p th:if="${success}" th:text="${success}" class="message success"></p>
+
+    <a th:href="@{/backProfile}" class="back-link">Return to Dashboard</a>
+</div>
+
+</body>
+</html>

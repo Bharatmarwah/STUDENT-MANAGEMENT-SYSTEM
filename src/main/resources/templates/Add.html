@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register New Student - Student Management System</title>
+    <style>
+        /* Reset */
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+          font-family: 'Arial', sans-serif;
+        }
+
+        /* Body styling */
+        body {
+          min-height: 100vh;
+          background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 20px;
+        }
+
+        /* Container */
+        .form-container {
+          background-color: rgba(255, 255, 255, 0.95);
+          padding: 40px 30px;
+          border-radius: 12px;
+          box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+          width: 450px;
+        }
+
+        /* Headings */
+        .form-container h1 {
+          text-align: center;
+          margin-bottom: 10px;
+          color: #333;
+          font-size: 1.8rem;
+          font-weight: bold;
+        }
+
+        .form-container h3 {
+          margin-top: 20px;
+          margin-bottom: 10px;
+          color: #555;
+          font-size: 1.1rem;
+          border-bottom: 1px solid #ccc;
+          padding-bottom: 5px;
+        }
+
+        /* Labels and Inputs */
+        .form-container label {
+          display: block;
+          margin-top: 15px;
+          margin-bottom: 5px;
+          color: #333;
+          font-weight: bold;
+        }
+
+        .form-container input,
+        .form-container select {
+          width: 100%;
+          padding: 10px;
+          border-radius: 6px;
+          border: 1px solid #ccc;
+          font-size: 1rem;
+          outline: none;
+          transition: 0.3s;
+        }
+
+        .form-container input:focus,
+        .form-container select:focus {
+          border-color: #2575fc;
+          box-shadow: 0 0 5px rgba(37,117,252,0.5);
+        }
+
+        /* Phone fields inline */
+        .phone-group {
+          display: flex;
+          gap: 10px;
+          margin-top: 5px;
+        }
+
+        .phone-group input:first-child {
+          flex: 0 0 60px;
+        }
+
+        .phone-group input:last-child {
+          flex: 1;
+        }
+
+        /* Button */
+        .form-container button {
+          margin-top: 25px;
+          width: 100%;
+          padding: 12px;
+          border: none;
+          border-radius: 6px;
+          background-color: #2575fc;
+          color: white;
+          font-size: 1.1rem;
+          cursor: pointer;
+          transition: 0.3s;
+        }
+
+        .form-container button:hover {
+          background-color: #1a5edb;
+        }
+
+        /* Success and Error messages */
+        .success {
+          margin-top: 15px;
+          color: green;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        .error {
+          margin-top: 15px;
+          color: red;
+          font-weight: bold;
+          text-align: center;
+        }
+
+        /* Back link */
+        .back-link {
+          display: block;
+          margin-top: 20px;
+          text-align: center;
+          color: #2575fc;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        .back-link:hover {
+          text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h1>Register New Student</h1>
+    <p style="text-align:center; color:#555; margin-bottom:20px;">Complete all fields accurately to add a new student record</p>
+
+    <form th:action="@{/AddStudents}" th:object="${student}" method="post">
+        <label>Student ID</label>
+        <input type="number" th:field="*{studentId}" min="1000" required placeholder="Enter student ID">
+
+        <label>First Name</label>
+        <input type="text" th:field="*{firstName}" required placeholder="Enter first name">
+
+        <label>Last Name</label>
+        <input type="text" th:field="*{secondName}" required placeholder="Enter last name">
+
+        <label>Gender</label>
+        <select th:field="*{sex}" required>
+            <option value="">Select gender</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+
+        <label>Date of Birth</label>
+        <input type="date" th:field="*{birthdate.birthdate}" required>
+
+        <label>Father's Name</label>
+        <input type="text" th:field="*{fatherName}" required placeholder="Enter father's name">
+
+        <label>Mother's Name</label>
+        <input type="text" th:field="*{motherName}" required placeholder="Enter mother's name">
+
+        <h3>Address Information</h3>
+        <label>Street</label>
+        <input type="text" th:field="*{address.street}" placeholder="Street address">
+
+        <label>City</label>
+        <input type="text" th:field="*{address.city}" placeholder="City">
+
+        <label>State</label>
+        <input type="text" th:field="*{address.state}" placeholder="State">
+
+        <label>Postal Code</label>
+        <input type="text" th:field="*{address.postalCode}" pattern="\d{6}" placeholder="110034" maxlength="6">
+
+        <h3>Contact Number</h3>
+        <div class="phone-group">
+            <input type="text" th:field="*{phone.countryCode}" placeholder="+91" maxlength="3">
+            <input type="number" th:field="*{phone.number}" placeholder="1234567890">
+        </div>
+
+        <button type="submit">Register Student</button>
+    </form>
+
+    <p th:if="${success}" th:text="${success}" class="success"></p>
+    <p th:if="${error}" th:text="${error}" class="error"></p>
+
+    <a th:href="@{/GoToProfile}" class="back-link">Return to Dashboard</a>
+</div>
+
+</body>
+</html>
