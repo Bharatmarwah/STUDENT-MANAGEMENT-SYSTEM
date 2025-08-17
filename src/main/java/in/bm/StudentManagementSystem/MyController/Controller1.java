@@ -2,6 +2,8 @@ package in.bm.StudentManagementSystem.MyController;
 
 import in.bm.StudentManagementSystem.Entity.Student;
 import in.bm.StudentManagementSystem.Service.StudentService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +19,7 @@ public class Controller1 {
     @Autowired
     private StudentService studentService;
 
-    // Login
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -26,8 +28,12 @@ public class Controller1 {
     @PostMapping("/login")
     public String AdminLogin(@RequestParam String username,
                              @RequestParam String password,
-                             RedirectAttributes redirectAttributes) {
+                             RedirectAttributes redirectAttributes,
+                              HttpServletRequest Request ) {
         if ("Bharat".equals(username) && "Bharat123".equals(password)) {
+            HttpSession session = Request.getSession();
+            session.setAttribute("admin",username);
+
             return "profile";
         }
         redirectAttributes.addFlashAttribute("error", "Invalid credentials");
@@ -39,7 +45,7 @@ public class Controller1 {
         return "profile";
     }
 
-    // View all students
+
     @GetMapping("/ViewStudents")
     public String viewStudents(Model model) {
         List<Student> students = studentService.fetchAll();
@@ -47,7 +53,7 @@ public class Controller1 {
         return "View";
     }
 
-    // Add student
+
     @GetMapping("/AddStudents")
     public String addStudentForm(Model model) {
         model.addAttribute("student", new Student());
@@ -61,7 +67,7 @@ public class Controller1 {
         return "redirect:/AddStudents";
     }
 
-    // Remove student
+
     @GetMapping("/RemoveStudents")
     public String removeStudentForm() {
         return "Remove";
@@ -86,14 +92,13 @@ public class Controller1 {
         return "profile";
     }
 
-    // ================= Update Student =================
-    // Step 1: Show ID form
+
     @GetMapping("/UpdateStudents")
     public String showEnterIdForm() {
         return "UpdateID";
     }
 
-    // Step 2: Fetch student by ID
+
     @PostMapping("/UpdateStudents/fetch")
     public String fetchStudentById(@RequestParam("studentId") long id, Model model, RedirectAttributes redirectAttributes) {
         Optional<Student> studentOpt = studentService.findById(id);
@@ -106,7 +111,7 @@ public class Controller1 {
         }
     }
 
-    // Step 3: Save updated student
+
     @PostMapping("/UpdateStudents/save")
     public String updateStudent(@ModelAttribute Student student, RedirectAttributes redirectAttributes) {
         try {
@@ -117,7 +122,7 @@ public class Controller1 {
         }
         return "redirect:/UpdateStudents";
     }
-    // Add at the end of your Controller1 class
+
     @GetMapping("/GoToProfile")
     public String goback(){
         return "profile";
@@ -125,6 +130,7 @@ public class Controller1 {
     // Logout
     @GetMapping("/logout")
     public String logout() {
+
 
         return "redirect:/login";
     }
