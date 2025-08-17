@@ -35,6 +35,8 @@ The STUDENT-MANAGEMENT-SYSTEM is a web-based application designed to help educat
 - Teachers managing student records
 - IT staff maintaining academic databases
 
+##Database Connection
+https://github.com/Bharatmarwah/STUDENT-MANAGEMENT-SYSTEM/blob/main/DatabaseConnection.png
 
 
 
