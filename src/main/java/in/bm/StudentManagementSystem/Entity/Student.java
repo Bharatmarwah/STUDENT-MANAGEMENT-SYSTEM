@@ -3,10 +3,7 @@ package in.bm.StudentManagementSystem.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.Length;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "students")
